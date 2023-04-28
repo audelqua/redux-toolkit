@@ -11,9 +11,7 @@ const AnotherComp: React.FC = () => {
     const handleFetchUser = () => {
         console.log('we should dispatch thunk here');
         dispatch(fetchUserById(20)).then((response) => {
-            // do additional work
             console.log('response', response);
-            
         })
     }
 
@@ -32,11 +30,3 @@ const AnotherComp: React.FC = () => {
 }
 
 export default AnotherComp
-
-// const somePromise = new Promise(function(res, rej){
-//     res('hello')
-// })
-// const callPromise = () => {
-//     somePromise.then(res => {console.log(res)})
-// }
-// callPromise()

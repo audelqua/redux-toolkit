@@ -6,7 +6,6 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 const MainComponent: React.FC = () => {
     const count = useAppSelector((state) => state.counterReducer.value);
     const dispatch = useAppDispatch();
-    console.log('count', count);
     
     return (
         <div>
