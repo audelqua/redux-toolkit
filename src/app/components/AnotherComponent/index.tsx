@@ -9,7 +9,6 @@ const AnotherComp: React.FC = () => {
     const dispatch = useAppDispatch();
     
     const handleFetchUser = () => {
-        console.log('we should dispatch thunk here');
         dispatch(fetchUserById(20)).then((response) => {
             console.log('response', response);
         })
