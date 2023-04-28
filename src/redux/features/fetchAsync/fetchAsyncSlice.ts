@@ -2,10 +2,24 @@ import { createSlice } from '@reduxjs/toolkit'
 import { fetchUserById } from './fetchAsyncThunkActions'
 
 interface UsersState {
-    data: string | unknown,
+    data: string,
     loading: 'idle' | 'pending' | 'succeeded' | 'failed',
     error: boolean
 }
+
+
+// definition of these types for action needs more research, for now i set it to any type
+// interface IThunkMetaType { 
+//     age: number,
+//     request: string,
+//     requestState: string
+// }
+
+// interface IFetchUserActionType {
+//     meta: IThunkMetaType,
+//     payload: string,
+//     type: string
+// }
 
 const initialState = {
     data: '',
@@ -25,8 +39,10 @@ const usersSlice = createSlice({
       builder.addCase(fetchUserById.pending, (state) => {
         state.loading = 'pending';
       })
-      .addCase(fetchUserById.fulfilled, (state, action) => {
+      .addCase(fetchUserById.fulfilled, (state, action: any) => {
         state.loading = 'succeeded';
+        console.log(action);
+        
         state.data = action.payload;
         
       })

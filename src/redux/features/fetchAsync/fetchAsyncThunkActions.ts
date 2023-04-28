@@ -3,10 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 // First, create the thunk
 export const fetchUserById = createAsyncThunk(
     'users/fetch',
-    async (userId: number, thunkAPI) => {
-      const response = await userAPI.fetchById(userId)
-      return response
-    }
+    async (userId: number, thunkAPI) => await userAPI.fetchById(userId)
 )
 
 const userAPI = {
