@@ -1,6 +1,6 @@
 "use client";
 import React from 'react'
-import { decrement, increment, reset } from "@/redux/features/counterSlice";
+import { decrement, increment, reset } from "@/redux/features/counter/counterSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 
 const MainComponent: React.FC = () => {

@@ -1,29 +1,20 @@
 "use client";
 import React from 'react'
-import { useAppSelector } from "@/redux/hooks";
-import { createAsyncThunk } from '@reduxjs/toolkit'
-
-const fetchUserData = (id: number) => new Promise(function (res) {
-    setTimeout(function () {
-        return res(`hello world! this is your id ${id}`)
-    }, 1000)
-})
-
-// console.log('fetchUserData', fetchUserData.then(res => console.log(res)));
-
-
-const fetchUser = createAsyncThunk('user/fetchUser', async function (userId, thunkAPI) {
-    console.log('here we are');
-
-    const response = await fetchUserData(12)
-    return response
-})
+import { useAppSelector, useAppDispatch } from "@/redux/hooks";
+import { fetchUserById } from '../../../redux/features/fetchAsync/fetchAsyncThunkActions'
 
 const AnotherComp: React.FC = () => {
     const count = useAppSelector((state) => state.counterReducer.value);
-
+    const myUser = useAppSelector((state) => state.userReducer.data);
+    const dispatch = useAppDispatch();
+    
     const handleFetchUser = () => {
         console.log('we should dispatch thunk here');
+        dispatch(fetchUserById(20)).then((response) => {
+            // do additional work
+            console.log('response', response);
+            
+        })
     }
 
     return (
@@ -34,6 +25,7 @@ const AnotherComp: React.FC = () => {
                 <button onClick={handleFetchUser}>
                     click to fetch user
                 </button>
+                <span>user is: {myUser}</span>
             </div>
         </div>
     )

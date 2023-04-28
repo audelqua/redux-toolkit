@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "./features/counterSlice";
+import counterReducer from "./features/counter/counterSlice";
+import userReducer from "./features/fetchAsync/fetchAsyncSlice";
 
 export const store = configureStore({
   reducer: {
-    counterReducer
+    counterReducer,
+    userReducer
   },
   devTools: process.env.NODE_ENV !== "production",
 });
